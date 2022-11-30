@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:international/translations.dart';
+import 'package:international/translationsdelegate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +28,32 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      supportedLocales: const [
+        Locale('ko', 'KR'),
+        Locale('en', 'US')
+      ],
+      localizationsDelegates: const [
+        TranslationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      localeResolutionCallback: (Locale? locale, Iterable<Locale> supportedLocales) {
+        if (locale == null) {
+          debugPrint("*language locale is null!!!");
+          return supportedLocales.first;
+        }
+
+        for (Locale supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode ||
+              supportedLocale.countryCode == locale.countryCode) {
+            debugPrint("*language ok $supportedLocale");
+            return supportedLocale;
+          }
+        }
+
+        debugPrint("*language to fallback ${supportedLocales.first}");
+        return supportedLocales.first;
+      },
     );
   }
 }
@@ -73,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(Translations.of(context)?.trans('main_title')??'null value',),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -95,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              Translations.of(context)?.trans('main_center_text')??'null',
             ),
             Text(
               '$_counter',
