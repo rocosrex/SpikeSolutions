@@ -44,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
+    apiKey: 'a',//'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
     appId: '1:416273103026:web:2ccb45a501fb5be5b931ab',
     messagingSenderId: '416273103026',
     projectId: 'rocos-rex-myrestaurant-202211',
@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC2nbmM62AnIO7jIusquHBg5v6DaDMZoco',
+    apiKey: 'a',//'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
     appId: '1:416273103026:android:8a4ebcc3ee06e031b931ab',
     messagingSenderId: '416273103026',
     projectId: 'rocos-rex-myrestaurant-202211',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCpospGA7rCu1gK4qogWpKYFVUxdEBkIMM',
+    apiKey: 'a',//'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
     appId: '1:416273103026:ios:b13e80080a59ade0b931ab',
     messagingSenderId: '416273103026',
     projectId: 'rocos-rex-myrestaurant-202211',
@@ -71,7 +71,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCpospGA7rCu1gK4qogWpKYFVUxdEBkIMM',
+    apiKey: 'a',//'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
     appId: '1:416273103026:ios:b13e80080a59ade0b931ab',
     messagingSenderId: '416273103026',
     projectId: 'rocos-rex-myrestaurant-202211',

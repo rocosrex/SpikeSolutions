@@ -259,6 +259,9 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
             ),
           ),
           // 텍스트 폼 필드
+          Positioned(
+            child: child,
+          )
         ],
       ),
     );
