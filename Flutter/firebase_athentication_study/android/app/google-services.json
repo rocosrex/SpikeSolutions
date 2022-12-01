@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "416273103026",
+    "project_id": "rocos-rex-myrestaurant-202211",
+    "storage_bucket": "rocos-rex-myrestaurant-202211.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416273103026:android:8a4ebcc3ee06e031b931ab",
+        "android_client_info": {
+          "package_name": "com.example.firebase_athentication_study"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416273103026-gpue1flmpa1ol9nup6s1rg8gep3s4ovf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2nbmM62AnIO7jIusquHBg5v6DaDMZoco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416273103026-gpue1flmpa1ol9nup6s1rg8gep3s4ovf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "416273103026-s4nqe649splioaqq448m4erjavaqbghv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myrestaurant"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416273103026:android:34fb64f881e9aea5b931ab",
+        "android_client_info": {
+          "package_name": "com.example.myrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416273103026-gpue1flmpa1ol9nup6s1rg8gep3s4ovf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2nbmM62AnIO7jIusquHBg5v6DaDMZoco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416273103026-gpue1flmpa1ol9nup6s1rg8gep3s4ovf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "416273103026-s4nqe649splioaqq448m4erjavaqbghv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myrestaurant"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
