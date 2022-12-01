@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "196834217391",
+    "project_id": "rocos-rex-flutterstudy-001",
+    "storage_bucket": "rocos-rex-flutterstudy-001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196834217391:android:91ae59e3a34b463403335a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196834217391-phfl9f4ip2oab4hr983in8jd8d370c78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-DNP-b28TXTbooaXL52eCqq1UhDBQ3Zk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196834217391-phfl9f4ip2oab4hr983in8jd8d370c78.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
