@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'a',//'AIzaSyDsoQVlhcvLmmFRdjZw0534-9bPRRh9hSs',
+    apiKey: 'AIzaSyABo_WL1I73ccYHeHBcpPBFlOUaBAGgaoY',
     appId: '1:416273103026:android:8a4ebcc3ee06e031b931ab',
     messagingSenderId: '416273103026',
     projectId: 'rocos-rex-myrestaurant-202211',

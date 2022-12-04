@@ -1,4 +1,7 @@
 import 'package:firebase_athentication_study/config/palette.dart';
+import 'package:firebase_athentication_study/pages/chatScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -11,6 +14,7 @@ class LoginFireBaseScreen extends StatefulWidget {
 }
 
 class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
+  final _authentication = FirebaseAuth.instance;
   bool isSignUpScreen = true;
   final _formkey = GlobalKey<FormState>();
   String userName = '';
@@ -192,6 +196,9 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                     }
                                     return null;
                                   },
+                                  onChanged: (value) {
+                                    userName = value;
+                                  },
                                   onSaved: (value) {
                                     userName = value!;
                                   },
@@ -227,12 +234,17 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                   height: 8,
                                 ),
                                 TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   key: const ValueKey(2),
                                   validator: (value) {
-                                    if (value!.isEmpty || value.contains('@')) {
+                                    if (value!.isEmpty ||
+                                        !value.contains('@')) {
                                       return 'Please enter valid email address';
                                     }
                                     return null;
+                                  },
+                                  onChanged: (value) {
+                                    userEmail = value;
                                   },
                                   onSaved: (value) {
                                     userEmail = value!;
@@ -258,7 +270,7 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                           Radius.circular(35.0),
                                         ),
                                       ),
-                                      hintText: 'Password',
+                                      hintText: 'email',
                                       hintStyle: TextStyle(
                                         fontSize: 14,
                                         color: Palette.textColor1,
@@ -269,12 +281,16 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                   height: 8,
                                 ),
                                 TextFormField(
+                                  obscureText: true,
                                   key: const ValueKey(3),
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
                                       return 'Password must be at least 7 characters long.';
                                     }
                                     return null;
+                                  },
+                                  onChanged: (value) {
+                                    userPassword = value;
                                   },
                                   onSaved: (value) {
                                     userPassword = value!;
@@ -300,7 +316,7 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                           Radius.circular(35.0),
                                         ),
                                       ),
-                                      hintText: 'Confirm password',
+                                      hintText: 'password',
                                       hintStyle: TextStyle(
                                         fontSize: 14,
                                         color: Palette.textColor1,
@@ -325,6 +341,9 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                       return 'Please enter valid email address';
                                     }
                                     return null;
+                                  },
+                                  onChanged: (value) {
+                                    userEmail = value;
                                   },
                                   onSaved: (value) {
                                     userEmail = value!;
@@ -367,6 +386,9 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                                       return 'Password must be at least 7 characters long.';
                                     }
                                     return null;
+                                  },
+                                  onChanged: (value) {
+                                    userPassword = value;
                                   },
                                   onSaved: (value) {
                                     userPassword = value!;
@@ -425,8 +447,58 @@ class _LoginFireBaseScreenState extends State<LoginFireBaseScreen> {
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                   child: GestureDetector(
-                    onTap: () {
-                      _tryValidation();
+                    onTap: () async {
+                      if (isSignUpScreen) {
+                        _tryValidation();
+                        try {
+                          debugPrint('Sign Up');
+                          debugPrint(userEmail);
+                          debugPrint(userPassword);
+                          final newUser = await _authentication
+                              .createUserWithEmailAndPassword(
+                                  email: userEmail, password: userPassword);
+
+                          if (newUser.user != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return ChatScreen();
+                              }),
+                            );
+                          }
+                        } on Exception catch (e) {
+                          // TODO
+                          debugPrint(e.toString());
+                        }
+                      }
+                      if (!isSignUpScreen) {
+                        _tryValidation();
+
+                        debugPrint('Sign Ip');
+                        debugPrint(userEmail);
+                        debugPrint(userPassword);
+                        try {
+                          final newUser = await _authentication.signInWithEmailAndPassword(
+                              email: userEmail,
+                              password: userPassword);
+
+                          if (newUser.user != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return ChatScreen();
+                              }),
+                            );
+                          }
+                        } catch (e) {
+                          // TODO
+                          debugPrint(e.toString());
+                        }
+                      }
+
+                      // debugPrint(userName);
+                      // debugPrint(userEmail);
+                      // debugPrint(userPassword);
                     },
                     child: Container(
                       decoration: BoxDecoration(
