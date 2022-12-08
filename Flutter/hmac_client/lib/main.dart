@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hmac_client/TestModel.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:convert' as convert;
 import 'package:convert/convert.dart';
@@ -43,7 +44,8 @@ String percentDecode(String input) {
 
 enum AuthorizationMethod { get, post }
 
-String genAuthorizationHMAC({required AuthorizationMethod httpMethod}) {
+String genAuthorizationHMAC(
+    {required AuthorizationMethod httpMethod, String? content}) {
   const String appId = "4d53bce03ec34c0a911182d4c228ee6c";
   const String apiKey = "A93reRTUJHsCuQSHR+L3GxqOJyDmQpCgps102ciuabc=";
 
@@ -55,7 +57,8 @@ String genAuthorizationHMAC({required AuthorizationMethod httpMethod}) {
   String requestTimeStamp = timeSpan.inSeconds.toString();
 
   //String requestHttpMethod = method.toString().toUpperCase();
-  String requestHttpMethod = httpMethod.toString().toUpperCase().split('.').last;
+  String requestHttpMethod =
+      httpMethod.toString().toUpperCase().split('.').last;
 
   var uuid = const Uuid();
   // Generate a v1 (time-based) id
@@ -63,7 +66,17 @@ String genAuthorizationHMAC({required AuthorizationMethod httpMethod}) {
       .v1()
       .replaceAll('-', ''); // -> '6c84fb90-12c4-11e1-840d-7b25c5ee775a'
 
-  final requestContentBase64String = '';
+  var requestContentBase64String = '';
+  if (httpMethod == AuthorizationMethod.post) {
+    if (content != null) {
+      var byteToHash =
+          convert.utf8.encode(content); //convert.base64.decode(content);
+      var md5Digest = md5.convert(byteToHash);
+
+      requestContentBase64String = convert.base64.encode(md5Digest.bytes);
+      print('requestContentBase64String:$requestContentBase64String');
+    }
+  }
 
   final signatureRawData =
       '$appId$requestHttpMethod$requestUri$requestTimeStamp$nonce$requestContentBase64String';
@@ -79,9 +92,11 @@ String genAuthorizationHMAC({required AuthorizationMethod httpMethod}) {
   var digest = output.events.single;
   final signatureBytes = digest.bytes;
   final requestSignatureBase64String = convert.base64.encode(signatureBytes);
+  print('requestSignatureBase64String: $requestSignatureBase64String');
 
   final Authorization =
       'amx $appId:$requestSignatureBase64String:$nonce:$requestTimeStamp';
+  print(Authorization);
 
   return Authorization;
 }
@@ -134,7 +149,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var authCode = genAuthorizationHMAC(httpMethod: AuthorizationMethod.get );
+  var authCode = genAuthorizationHMAC(httpMethod: AuthorizationMethod.post);
   String responseData = 'response';
 
   void httpTest() async {
@@ -157,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void hmacClientTest() async {
+  void hmacClientGetTest() async {
     authCode = genAuthorizationHMAC(httpMethod: AuthorizationMethod.get);
 
     //http://www.happyrocos.com/api/HMACTest
@@ -167,9 +182,70 @@ class _MyHomePageState extends State<MyHomePage> {
     var response = await http.get(url, headers: {
       'Authorization': authCode,
     });
+    print('response.statusCode: ${response.statusCode}');
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
       responseData = jsonResponse.toString();
+      print('responseData: $responseData');
+    } else {
+      responseData = 'Request failed with status: ${response.statusCode}.';
+    }
+  }
+
+  void hmacClientPostTest() async {
+    var tmodel = const TestModel(
+        orderID: 10248,
+        customerName: 'Taiseer Joudeh',
+        shipperCity: 'Amman',
+        isShipped: true);
+
+    String content = convert.json.encode(tmodel.toJson());
+
+    authCode = genAuthorizationHMAC(
+        httpMethod: AuthorizationMethod.post, content: content);
+
+    //http://www.happyrocos.com/api/HMACTest
+    var url = Uri.http('www.happyrocos.com', '/api/HMACTest');
+
+    var response = await http.post(url,
+        headers: {
+          'Authorization': authCode,
+          'Content-Type': 'application/json',
+        },
+        body: content);
+
+    print('response.statusCode: ${response.statusCode}');
+    if (response.statusCode == 200) {
+      var jsonResponse = convert.jsonDecode(response.body);
+      responseData = jsonResponse.toString();
+      print('responseData: $responseData');
+    } else {
+      responseData = 'Request failed with status: ${response.statusCode}.';
+    }
+  }
+
+  void postRestaurant() async {
+    Map data = {
+      'UserId': 'QptOX0ifscgDR47TLXFgUZInrmn2',
+      'Name': '가츠오',
+      'Address': '서울특별시 서초구 서초1동 1658-17',
+      'PhoneNo': '02-6338-5154',
+      'HomePage': 'https://g.co/kgs/XSUFt2'
+    };
+
+    var body = convert.json.encode(data);
+
+    var url = Uri.http('www.happyrocos.com', '/api/MR_Restaurant');
+    print('url: $url');
+
+    var response = await http.post(url,
+        headers: {'Content-Type': 'application/json'}, body: body);
+
+    print('response.statusCode: ${response?.statusCode}');
+    if (response.statusCode == 200) {
+      var jsonResponse = convert.jsonDecode(response.body);
+      responseData = jsonResponse.toString();
+      print('responseData: $responseData');
     } else {
       responseData = 'Request failed with status: ${response.statusCode}.';
     }
@@ -214,10 +290,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 setState(() {
                   // authCode = genAuthorizationHMAC();
                   // httpTest();
-                  hmacClientTest();
+                  hmacClientGetTest();
                 });
               },
-              child: const Text('Gen HMAC Authorization Code'),
+              child: const Text('HMAC Get'),
+            ),
+            Text(responseData),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  postRestaurant();
+                  //hmacClientPostTest();
+                });
+              },
+              child: const Text('HMAC Post'),
             ),
             Text(responseData),
           ],
