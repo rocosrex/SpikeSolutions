@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'mrRestaurant.freezed.dart';
-part 'mrRestaurant.g.dart';
+part 'restaurant.freezed.dart';
+part 'restaurant.g.dart';
 
 @freezed
-class mrRestaurant with _$mrRestaurant {
-  factory mrRestaurant({
+class Restaurant with _$Restaurant {
+  factory Restaurant({
     required int id,
     required String name,
     required String address,
@@ -15,6 +15,6 @@ class mrRestaurant with _$mrRestaurant {
     required double lng,
     required bool reVisit,
     required String userId,
-  }) = _mrRestaurant;
-factory mrRestaurant.fromJson(Map<String, dynamic> json) => _$mrRestaurantFromJson(json);
+  }) = _Restaurant;
+factory Restaurant.fromJson(Map<String, dynamic> json) => _$RestaurantFromJson(json);
 }

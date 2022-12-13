@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'mrRestaurant.dart';
+part of 'restaurant.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_mrRestaurant _$$_mrRestaurantFromJson(Map<String, dynamic> json) =>
-    _$_mrRestaurant(
+_$_Restaurant _$$_RestaurantFromJson(Map<String, dynamic> json) =>
+    _$_Restaurant(
       id: json['id'] as int,
       name: json['name'] as String,
       address: json['address'] as String,
@@ -19,7 +19,7 @@ _$_mrRestaurant _$$_mrRestaurantFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$_mrRestaurantToJson(_$_mrRestaurant instance) =>
+Map<String, dynamic> _$$_RestaurantToJson(_$_Restaurant instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

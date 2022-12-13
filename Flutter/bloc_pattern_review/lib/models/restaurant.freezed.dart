@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'mrRestaurant.dart';
+part of 'restaurant.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-mrRestaurant _$mrRestaurantFromJson(Map<String, dynamic> json) {
-  return _mrRestaurant.fromJson(json);
+Restaurant _$RestaurantFromJson(Map<String, dynamic> json) {
+  return _Restaurant.fromJson(json);
 }
 
 /// @nodoc
-mixin _$mrRestaurant {
+mixin _$Restaurant {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
@@ -32,15 +32,15 @@ mixin _$mrRestaurant {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $mrRestaurantCopyWith<mrRestaurant> get copyWith =>
+  $RestaurantCopyWith<Restaurant> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $mrRestaurantCopyWith<$Res> {
-  factory $mrRestaurantCopyWith(
-          mrRestaurant value, $Res Function(mrRestaurant) then) =
-      _$mrRestaurantCopyWithImpl<$Res, mrRestaurant>;
+abstract class $RestaurantCopyWith<$Res> {
+  factory $RestaurantCopyWith(
+          Restaurant value, $Res Function(Restaurant) then) =
+      _$RestaurantCopyWithImpl<$Res, Restaurant>;
   @useResult
   $Res call(
       {int id,
@@ -55,9 +55,9 @@ abstract class $mrRestaurantCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$mrRestaurantCopyWithImpl<$Res, $Val extends mrRestaurant>
-    implements $mrRestaurantCopyWith<$Res> {
-  _$mrRestaurantCopyWithImpl(this._value, this._then);
+class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
+    implements $RestaurantCopyWith<$Res> {
+  _$RestaurantCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -119,11 +119,11 @@ class _$mrRestaurantCopyWithImpl<$Res, $Val extends mrRestaurant>
 }
 
 /// @nodoc
-abstract class _$$_mrRestaurantCopyWith<$Res>
-    implements $mrRestaurantCopyWith<$Res> {
-  factory _$$_mrRestaurantCopyWith(
-          _$_mrRestaurant value, $Res Function(_$_mrRestaurant) then) =
-      __$$_mrRestaurantCopyWithImpl<$Res>;
+abstract class _$$_RestaurantCopyWith<$Res>
+    implements $RestaurantCopyWith<$Res> {
+  factory _$$_RestaurantCopyWith(
+          _$_Restaurant value, $Res Function(_$_Restaurant) then) =
+      __$$_RestaurantCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,11 +139,11 @@ abstract class _$$_mrRestaurantCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_mrRestaurantCopyWithImpl<$Res>
-    extends _$mrRestaurantCopyWithImpl<$Res, _$_mrRestaurant>
-    implements _$$_mrRestaurantCopyWith<$Res> {
-  __$$_mrRestaurantCopyWithImpl(
-      _$_mrRestaurant _value, $Res Function(_$_mrRestaurant) _then)
+class __$$_RestaurantCopyWithImpl<$Res>
+    extends _$RestaurantCopyWithImpl<$Res, _$_Restaurant>
+    implements _$$_RestaurantCopyWith<$Res> {
+  __$$_RestaurantCopyWithImpl(
+      _$_Restaurant _value, $Res Function(_$_Restaurant) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,7 +159,7 @@ class __$$_mrRestaurantCopyWithImpl<$Res>
     Object? reVisit = null,
     Object? userId = null,
   }) {
-    return _then(_$_mrRestaurant(
+    return _then(_$_Restaurant(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -202,8 +202,8 @@ class __$$_mrRestaurantCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_mrRestaurant implements _mrRestaurant {
-  _$_mrRestaurant(
+class _$_Restaurant implements _Restaurant {
+  _$_Restaurant(
       {required this.id,
       required this.name,
       required this.address,
@@ -214,8 +214,8 @@ class _$_mrRestaurant implements _mrRestaurant {
       required this.reVisit,
       required this.userId});
 
-  factory _$_mrRestaurant.fromJson(Map<String, dynamic> json) =>
-      _$$_mrRestaurantFromJson(json);
+  factory _$_Restaurant.fromJson(Map<String, dynamic> json) =>
+      _$$_RestaurantFromJson(json);
 
   @override
   final int id;
@@ -238,14 +238,14 @@ class _$_mrRestaurant implements _mrRestaurant {
 
   @override
   String toString() {
-    return 'mrRestaurant(id: $id, name: $name, address: $address, phoneNo: $phoneNo, homePage: $homePage, lat: $lat, lng: $lng, reVisit: $reVisit, userId: $userId)';
+    return 'Restaurant(id: $id, name: $name, address: $address, phoneNo: $phoneNo, homePage: $homePage, lat: $lat, lng: $lng, reVisit: $reVisit, userId: $userId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_mrRestaurant &&
+            other is _$_Restaurant &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
@@ -266,19 +266,19 @@ class _$_mrRestaurant implements _mrRestaurant {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_mrRestaurantCopyWith<_$_mrRestaurant> get copyWith =>
-      __$$_mrRestaurantCopyWithImpl<_$_mrRestaurant>(this, _$identity);
+  _$$_RestaurantCopyWith<_$_Restaurant> get copyWith =>
+      __$$_RestaurantCopyWithImpl<_$_Restaurant>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_mrRestaurantToJson(
+    return _$$_RestaurantToJson(
       this,
     );
   }
 }
 
-abstract class _mrRestaurant implements mrRestaurant {
-  factory _mrRestaurant(
+abstract class _Restaurant implements Restaurant {
+  factory _Restaurant(
       {required final int id,
       required final String name,
       required final String address,
@@ -287,10 +287,10 @@ abstract class _mrRestaurant implements mrRestaurant {
       required final double lat,
       required final double lng,
       required final bool reVisit,
-      required final String userId}) = _$_mrRestaurant;
+      required final String userId}) = _$_Restaurant;
 
-  factory _mrRestaurant.fromJson(Map<String, dynamic> json) =
-      _$_mrRestaurant.fromJson;
+  factory _Restaurant.fromJson(Map<String, dynamic> json) =
+      _$_Restaurant.fromJson;
 
   @override
   int get id;
@@ -312,6 +312,6 @@ abstract class _mrRestaurant implements mrRestaurant {
   String get userId;
   @override
   @JsonKey(ignore: true)
-  _$$_mrRestaurantCopyWith<_$_mrRestaurant> get copyWith =>
+  _$$_RestaurantCopyWith<_$_Restaurant> get copyWith =>
       throw _privateConstructorUsedError;
 }

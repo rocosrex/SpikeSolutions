@@ -1,10 +1,10 @@
-import '../models/mrRestaurant.dart';
+import '../models/restaurant.dart';
 
-/// GET - ListmrRestaurant
-/// POST - CreatemrRestaurant
-/// DELETE - DeletemrRestaurant
-class mrRestaurantRepository {
-  Future<List<Map<String, dynamic>>> listmrRestaurant() async {
+/// GET - ListRestaurant
+/// POST - CreateRestaurant
+/// DELETE - DeleteRestaurant
+class RestaurantRepository {
+  Future<List<Map<String, dynamic>>> listRestaurant() async {
     await Future.delayed(Duration(seconds: 1));
 
     //Delete the below codes and put your code
@@ -22,16 +22,16 @@ class mrRestaurantRepository {
     ];
   }
 
-  Future<Map<String, dynamic>> createmrRestaurant(mrRestaurant mrrestaurant) async {
+  Future<Map<String, dynamic>> createRestaurant(Restaurant restaurant) async {
     /// body - request - response - return
     await Future.delayed(Duration(seconds: 1));
 
-    return mrrestaurant.toJson();
+    return restaurant.toJson();
   }
 
-  Future<Map<String, dynamic>> deletemrRestaurant(mrRestaurant mrrestaurant) async {
+  Future<Map<String, dynamic>> deleteRestaurant(Restaurant restaurant) async {
     await Future.delayed(Duration(seconds: 1));
 
-    return mrrestaurant.toJson();
+    return restaurant.toJson();
   }
 }
