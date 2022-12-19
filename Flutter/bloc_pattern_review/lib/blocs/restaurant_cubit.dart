@@ -46,9 +46,11 @@ class RestaurantCubit extends Cubit<RestaurantState> {
           address: 'the string',
           phoneNo: 'the string',
           homePage: 'the string',
+          kindOf: 'the string',
           lat: 0.0,
           lng: 0.0,
-          reVisit: true,
+          subject: 'the string',
+          visitKind: VisitKind.interestVisit,
           userId: 'the string',
         );
 

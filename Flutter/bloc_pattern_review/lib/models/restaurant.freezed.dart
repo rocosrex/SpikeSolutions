@@ -25,9 +25,11 @@ mixin _$Restaurant {
   String get address => throw _privateConstructorUsedError;
   String get phoneNo => throw _privateConstructorUsedError;
   String get homePage => throw _privateConstructorUsedError;
+  String get kindOf => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get lng => throw _privateConstructorUsedError;
-  bool get reVisit => throw _privateConstructorUsedError;
+  String get subject => throw _privateConstructorUsedError;
+  VisitKind get visitKind => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,9 +50,11 @@ abstract class $RestaurantCopyWith<$Res> {
       String address,
       String phoneNo,
       String homePage,
+      String kindOf,
       double lat,
       double lng,
-      bool reVisit,
+      String subject,
+      VisitKind visitKind,
       String userId});
 }
 
@@ -72,9 +76,11 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
     Object? address = null,
     Object? phoneNo = null,
     Object? homePage = null,
+    Object? kindOf = null,
     Object? lat = null,
     Object? lng = null,
-    Object? reVisit = null,
+    Object? subject = null,
+    Object? visitKind = null,
     Object? userId = null,
   }) {
     return _then(_value.copyWith(
@@ -98,6 +104,10 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
           ? _value.homePage
           : homePage // ignore: cast_nullable_to_non_nullable
               as String,
+      kindOf: null == kindOf
+          ? _value.kindOf
+          : kindOf // ignore: cast_nullable_to_non_nullable
+              as String,
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -106,10 +116,14 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
               as double,
-      reVisit: null == reVisit
-          ? _value.reVisit
-          : reVisit // ignore: cast_nullable_to_non_nullable
-              as bool,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      visitKind: null == visitKind
+          ? _value.visitKind
+          : visitKind // ignore: cast_nullable_to_non_nullable
+              as VisitKind,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -132,9 +146,11 @@ abstract class _$$_RestaurantCopyWith<$Res>
       String address,
       String phoneNo,
       String homePage,
+      String kindOf,
       double lat,
       double lng,
-      bool reVisit,
+      String subject,
+      VisitKind visitKind,
       String userId});
 }
 
@@ -154,9 +170,11 @@ class __$$_RestaurantCopyWithImpl<$Res>
     Object? address = null,
     Object? phoneNo = null,
     Object? homePage = null,
+    Object? kindOf = null,
     Object? lat = null,
     Object? lng = null,
-    Object? reVisit = null,
+    Object? subject = null,
+    Object? visitKind = null,
     Object? userId = null,
   }) {
     return _then(_$_Restaurant(
@@ -180,6 +198,10 @@ class __$$_RestaurantCopyWithImpl<$Res>
           ? _value.homePage
           : homePage // ignore: cast_nullable_to_non_nullable
               as String,
+      kindOf: null == kindOf
+          ? _value.kindOf
+          : kindOf // ignore: cast_nullable_to_non_nullable
+              as String,
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -188,10 +210,14 @@ class __$$_RestaurantCopyWithImpl<$Res>
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
               as double,
-      reVisit: null == reVisit
-          ? _value.reVisit
-          : reVisit // ignore: cast_nullable_to_non_nullable
-              as bool,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      visitKind: null == visitKind
+          ? _value.visitKind
+          : visitKind // ignore: cast_nullable_to_non_nullable
+              as VisitKind,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -209,9 +235,11 @@ class _$_Restaurant implements _Restaurant {
       required this.address,
       required this.phoneNo,
       required this.homePage,
+      required this.kindOf,
       required this.lat,
       required this.lng,
-      required this.reVisit,
+      required this.subject,
+      required this.visitKind,
       required this.userId});
 
   factory _$_Restaurant.fromJson(Map<String, dynamic> json) =>
@@ -228,17 +256,21 @@ class _$_Restaurant implements _Restaurant {
   @override
   final String homePage;
   @override
+  final String kindOf;
+  @override
   final double lat;
   @override
   final double lng;
   @override
-  final bool reVisit;
+  final String subject;
+  @override
+  final VisitKind visitKind;
   @override
   final String userId;
 
   @override
   String toString() {
-    return 'Restaurant(id: $id, name: $name, address: $address, phoneNo: $phoneNo, homePage: $homePage, lat: $lat, lng: $lng, reVisit: $reVisit, userId: $userId)';
+    return 'Restaurant(id: $id, name: $name, address: $address, phoneNo: $phoneNo, homePage: $homePage, kindOf: $kindOf, lat: $lat, lng: $lng, subject: $subject, visitKind: $visitKind, userId: $userId)';
   }
 
   @override
@@ -252,16 +284,19 @@ class _$_Restaurant implements _Restaurant {
             (identical(other.phoneNo, phoneNo) || other.phoneNo == phoneNo) &&
             (identical(other.homePage, homePage) ||
                 other.homePage == homePage) &&
+            (identical(other.kindOf, kindOf) || other.kindOf == kindOf) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
-            (identical(other.reVisit, reVisit) || other.reVisit == reVisit) &&
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.visitKind, visitKind) ||
+                other.visitKind == visitKind) &&
             (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, address, phoneNo,
-      homePage, lat, lng, reVisit, userId);
+      homePage, kindOf, lat, lng, subject, visitKind, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -284,9 +319,11 @@ abstract class _Restaurant implements Restaurant {
       required final String address,
       required final String phoneNo,
       required final String homePage,
+      required final String kindOf,
       required final double lat,
       required final double lng,
-      required final bool reVisit,
+      required final String subject,
+      required final VisitKind visitKind,
       required final String userId}) = _$_Restaurant;
 
   factory _Restaurant.fromJson(Map<String, dynamic> json) =
@@ -303,11 +340,15 @@ abstract class _Restaurant implements Restaurant {
   @override
   String get homePage;
   @override
+  String get kindOf;
+  @override
   double get lat;
   @override
   double get lng;
   @override
-  bool get reVisit;
+  String get subject;
+  @override
+  VisitKind get visitKind;
   @override
   String get userId;
   @override

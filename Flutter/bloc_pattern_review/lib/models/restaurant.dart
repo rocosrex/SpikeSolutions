@@ -1,7 +1,10 @@
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'restaurant.freezed.dart';
 part 'restaurant.g.dart';
+
+enum VisitKind { interestVisit, noReVisit, willVisit }
 
 @freezed
 class Restaurant with _$Restaurant {
@@ -11,10 +14,14 @@ class Restaurant with _$Restaurant {
     required String address,
     required String phoneNo,
     required String homePage,
+    required String kindOf,
     required double lat,
     required double lng,
-    required bool reVisit,
+    required String subject,
+    required VisitKind visitKind,
     required String userId,
   }) = _Restaurant;
+
 factory Restaurant.fromJson(Map<String, dynamic> json) => _$RestaurantFromJson(json);
 }
+
