@@ -2,7 +2,6 @@
 import 'package:aws_s3/sign_up_page.dart';
 import 'package:aws_s3/verification_page.dart';
 import 'package:flutter/material.dart';
-import 'amplifyconfiguration.dart';
 import 'auth_service.dart';
 import 'camera_flow.dart';
 import 'login_page.dart';
