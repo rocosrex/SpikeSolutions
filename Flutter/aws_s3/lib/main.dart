@@ -1,8 +1,10 @@
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:aws_s3/sign_up_page.dart';
 import 'package:aws_s3/verification_page.dart';
 import 'package:flutter/material.dart';
-
+import 'amplifyconfiguration.dart';
 import 'auth_service.dart';
+import 'camera_flow.dart';
 import 'login_page.dart';
 
 void main() {
@@ -21,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _configureAmplify();
     _authService.showLogin();
   }
 
@@ -59,7 +62,12 @@ class _MyAppState extends State<MyApp> {
 
                   if (snapshot.data?.authFlowStatus == AuthFlowStatus.verification)
                     MaterialPage(child: VerificationPage(
-                        didProvideVerificationCode: _authService.verifyCode))
+                        didProvideVerificationCode: _authService.verifyCode)),
+
+                  // Show Camera Flow
+                  if (snapshot.data?.authFlowStatus == AuthFlowStatus.session)
+                    MaterialPage(
+                        child: CameraFlow(shouldLogOut: _authService.logOut))
                 ],
                 onPopPage: (route, result) => route.didPop(result),
               );
@@ -72,5 +80,15 @@ class _MyAppState extends State<MyApp> {
             }
           }),
     );
+  }
+
+  void _configureAmplify() async {
+    if (!mounted) return;
+    try {
+      await Amplify.configure(amplifyconfig);
+      print('Successfully configured Amplify 🎉');
+    } catch (e) {
+      print('Could not configure Amplify ☠️');
+    }
   }
 }
