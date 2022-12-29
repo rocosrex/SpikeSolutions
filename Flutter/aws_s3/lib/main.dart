@@ -1,4 +1,4 @@
-import 'package:amplify_flutter/amplify_flutter.dart';
+// import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:aws_s3/sign_up_page.dart';
 import 'package:aws_s3/verification_page.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _configureAmplify();
+    // _configureAmplify();
     _authService.showLogin();
   }
 
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
   void _configureAmplify() async {
     if (!mounted) return;
     try {
-      await Amplify.configure(amplifyconfig);
+      // await Amplify.configure(amplifyconfig);
       print('Successfully configured Amplify 🎉');
     } catch (e) {
       print('Could not configure Amplify ☠️');
