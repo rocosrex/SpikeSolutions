@@ -12,14 +12,14 @@
       "AmplifyAppId": "d1g0sm05gmqqxy"
     },
     "categories": {
-      "auth": {
-        "awss34f751def": {}
-      },
       "function": {
         "S3Trigger57b98e90": {
           "deploymentBucketName": "amplify-awss3-dev-232402-deployment",
           "s3Key": "amplify-builds/S3Trigger57b98e90-4f6350514b6f79554e75-build.zip"
         }
+      },
+      "auth": {
+        "awss3e21d6d41": {}
       }
     }
   }

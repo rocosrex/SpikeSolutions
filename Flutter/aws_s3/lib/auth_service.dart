@@ -67,6 +67,8 @@ class AuthService {
           password: credentials.password,
           options: CognitoSignUpOptions(userAttributes: userAttributes));
 
+      print('result.isSignUpComplete: ${result.isSignUpComplete == true}');
+
       // 4
       if (result.isSignUpComplete) {
         loginWithCredentials(credentials);
