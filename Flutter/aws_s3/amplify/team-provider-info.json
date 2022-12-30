@@ -10,6 +10,17 @@
       "StackName": "amplify-awss3-dev-232402",
       "StackId": "arn:aws:cloudformation:us-east-1:802786065851:stack/amplify-awss3-dev-232402/72e9c830-8784-11ed-bf18-0a90bc7546a1",
       "AmplifyAppId": "d1g0sm05gmqqxy"
+    },
+    "categories": {
+      "auth": {
+        "awss34f751def": {}
+      },
+      "function": {
+        "S3Trigger57b98e90": {
+          "deploymentBucketName": "amplify-awss3-dev-232402-deployment",
+          "s3Key": "amplify-builds/S3Trigger57b98e90-4f6350514b6f79554e75-build.zip"
+        }
+      }
     }
   }
 }

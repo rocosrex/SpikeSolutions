@@ -45,20 +45,20 @@ class _SignUpPageState extends State<SignUpPage> {
         TextField(
           controller: _usernameController,
           decoration:
-          InputDecoration(icon: Icon(Icons.person), labelText: 'Username'),
+          const InputDecoration(icon: Icon(Icons.person), labelText: 'Username'),
         ),
 
         // Email TextField
         TextField(
           controller: _emailController,
           decoration:
-          InputDecoration(icon: Icon(Icons.mail), labelText: 'Email'),
+          const InputDecoration(icon: Icon(Icons.mail), labelText: 'Email'),
         ),
 
         // Password TextField
         TextField(
           controller: _passwordController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
               icon: Icon(Icons.lock_open), labelText: 'Password'),
           obscureText: true,
           keyboardType: TextInputType.visiblePassword,
@@ -67,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
         // Sign Up Button
         ElevatedButton(
             onPressed: _signUp,
-            child: Text('Sign Up'),
+            child: const Text('Sign Up'),
         ),
       ],
     );

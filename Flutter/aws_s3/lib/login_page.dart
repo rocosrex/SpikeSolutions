@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'auth_credentials.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, required this.didProvideCredentials, required this.shouldShowSignUp}) : super(key: key);
+  const LoginPage(
+      {Key? key,
+      required this.didProvideCredentials,
+      required this.shouldShowSignUp})
+      : super(key: key);
 
   final ValueChanged<LoginCredentials> didProvideCredentials;
   final VoidCallback shouldShowSignUp;
-
 
   @override
   State<StatefulWidget> createState() => _LoginPageState();
@@ -81,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
     print('password: $password');
 
     final credentials =
-    LoginCredentials(username: username, password: password);
+        LoginCredentials(username: username, password: password);
     widget.didProvideCredentials(credentials);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:aws_s3/storage_service.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _CameraFlowState extends State<CameraFlow> {
   late CameraDescription _camera;
 
   bool _shouldShowCamera = false;
+  late StorageService _storageService;
 
   // 3
   List<MaterialPage> get _pages {
@@ -25,6 +27,7 @@ class _CameraFlowState extends State<CameraFlow> {
       // Show Gallery Page
       MaterialPage(
           child: GalleryPage(
+              imageUrlsController: _storageService.imageUrlsController,
               shouldLogOut: widget.shouldLogOut,
               shouldShowCamera: () => _toggleCameraOpen(true))),
 
@@ -35,6 +38,7 @@ class _CameraFlowState extends State<CameraFlow> {
                 camera: _camera,
                 didProvideImagePath: (imagePath) {
                   this._toggleCameraOpen(false);
+                  this._storageService.uploadImageAtPath(imagePath);
                 }))
     ];
   }
@@ -44,6 +48,8 @@ class _CameraFlowState extends State<CameraFlow> {
     // TODO: implement initState
     super.initState();
     _getCamera();
+    _storageService = StorageService();
+    _storageService.getImages();
   }
 
   @override
