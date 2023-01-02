@@ -1,0 +1,16 @@
+{
+  "resourceName": "zLINsRRPcxuYTACbe",
+  "policyUUID": "7e348480",
+  "bucketName": "awsmyrestauranta92b84209afd4549b32bf83f2a31898a",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger6a97748d",
+  "groupAccess": {}
+}
