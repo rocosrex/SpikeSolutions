@@ -1,0 +1,21 @@
+{
+    "appName": "awsmyrestaurant",
+    "roleName": "pinpointLambdaRole3ed0de53",
+    "cloudformationPolicyName": "cloudformationPolicy3ed0de53",
+    "cloudWatchPolicyName": "cloudWatchPolicy3ed0de53",
+    "pinpointPolicyName": "pinpointPolicy3ed0de53",
+    "authPolicyName": "pinpoint_amplify_3ed0de53",
+    "unauthPolicyName": "pinpoint_amplify_3ed0de53",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

@@ -27,7 +27,7 @@ class _SignUpViewState extends State<SignUpView> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
-  final phoneController = TextEditingController();
+  // final phoneController = TextEditingController();
   final confirmationCodeController = TextEditingController();
 
   String _signUpError = "";
@@ -45,7 +45,7 @@ class _SignUpViewState extends State<SignUpView> {
 
     Map<CognitoUserAttributeKey, String> userAttributes = {
       CognitoUserAttributeKey.email: emailController.text,
-      CognitoUserAttributeKey.phoneNumber: phoneController.text,
+      // CognitoUserAttributeKey.phoneNumber: phoneController.text,
     };
     try {
       await Amplify.Auth.signUp(
@@ -121,14 +121,14 @@ class _SignUpViewState extends State<SignUpView> {
                         labelText: 'Email *',
                       ),
                     ),
-                    TextFormField(
-                      controller: phoneController,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.phone),
-                        hintText: 'Phone number (WITH AREA CODE)',
-                        labelText: 'Phone number *',
-                      ),
-                    ),
+                    // TextFormField(
+                    //   controller: phoneController,
+                    //   decoration: const InputDecoration(
+                    //     icon: Icon(Icons.phone),
+                    //     hintText: 'Phone number (WITH AREA CODE)',
+                    //     labelText: 'Phone number *',
+                    //   ),
+                    // ),
                     ElevatedButton(
                       onPressed: _signUp,
                       child: const Text('Sign Up'),

@@ -50,5 +50,11 @@
         }
       ]
     }
+  },
+  "analytics": {
+    "awsmyrestaurant": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

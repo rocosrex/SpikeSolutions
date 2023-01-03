@@ -20,6 +20,8 @@ import 'package:aws_myrestaurant/Views/ImageLineItem.dart';
 import 'package:aws_myrestaurant/Views/ImageUploader.dart';
 import 'package:aws_myrestaurant/Views/UserView.dart';
 
+import '../hashids2.dart';
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -87,6 +89,20 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _showImageUploader();
+
+          // hashids Test
+          final hashids = HashIds(
+            salt: 'rocos myRestaurant',
+            minHashLength: 8,
+            alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+          );
+
+          DateTime now = DateTime.now();
+          final id = hashids.encode([now.day, now.month, now.year, now.hour, now.minute, now.second]);
+          print('id: $id');
+          final numbers = hashids.decode(id);
+          print(numbers);
+
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),

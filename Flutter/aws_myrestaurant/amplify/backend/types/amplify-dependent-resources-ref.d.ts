@@ -23,5 +23,12 @@ export type AmplifyDependentResourcesAttributes = {
             "BucketName": "string",
             "Region": "string"
         }
+    },
+    "analytics": {
+        "awsmyrestaurant": {
+            "Region": "string",
+            "Id": "string",
+            "appName": "string"
+        }
     }
 }
