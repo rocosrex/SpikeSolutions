@@ -13,6 +13,8 @@
  * permissions and limitations under the License.
  */
 
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:aws_myrestaurant/Pages/forgotpasswordPage.dart';
 import 'package:flutter/material.dart';
 
 import '../Views/SignInView.dart';
@@ -27,12 +29,14 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  bool isPasswordReset = false;
+
   Future<Null> _showDialogForResult(
       String text, Function onSuccess, Widget dialogWidget) async {
     bool result = await showDialog(
         context: context,
         builder: (BuildContext context) {
-          return new SimpleDialog(title: Text(text), children: [
+          return SimpleDialog(title: Text(text), children: [
             dialogWidget,
             ElevatedButton(
               child: const Text("Cancel"),
@@ -61,6 +65,37 @@ class _LandingPageState extends State<LandingPage> {
         MaterialPageRoute(builder: (context) => MainPage()), (route) => false);
   }
 
+  Future<void> resetPassword() async {
+    try {
+      final result = await Amplify.Auth.resetPassword(
+        username: 'rexlee70@gmail.com',
+      );
+      print('resetPassword: ${result.isPasswordReset}');
+      setState(() {
+        isPasswordReset = result.isPasswordReset;
+      });
+    } on AmplifyException catch (e) {
+      safePrint(e);
+    }
+  }
+
+  void onResetPassword() async {
+    // await resetPassword();
+
+    onConfirmResetPassword();
+  }
+
+  void onConfirmResetPassword() async {
+    try {
+      await Amplify.Auth.confirmResetPassword(
+          username: 'rexlee70@gmail.com',
+          newPassword: 'zxcv4321',
+          confirmationCode: '224592');
+    } on AmplifyException catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +107,11 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             openDialogButton("Sign In", onSignInSuccess, SignInView()),
+            ElevatedButton(
+                onPressed: () {
+                  onResetPassword();
+                },
+                child: const Text('Forgot Password')),
             openDialogButton(
                 "Sign Up", () => {print("sign up success")}, SignUpView())
           ],
